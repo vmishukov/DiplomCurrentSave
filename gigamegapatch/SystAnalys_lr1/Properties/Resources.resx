@@ -133,9 +133,6 @@
   <data name="shkolnyy-avtobus1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shkolnyy-avtobus1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Map" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cursor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,6 +148,9 @@
   <data name="shkolnyy-avtobus2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shkolnyy-avtobus2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="smezh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smezh.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cursor-game-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cursor-game-01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,8 +160,8 @@
   <data name="deleteAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deleteAll.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="smezh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\smezh.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Map" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vertex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vertex.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,13 +178,16 @@
   <data name="edge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edge.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="xxx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xxx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="72" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="62" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\62.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="xxx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\xxx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="map2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\map2.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

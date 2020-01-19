@@ -17,27 +17,27 @@ namespace SystAnalys_lr1
 
         static List<List<BusPark>> busesPark;
 
-        Dictionary<int, List<Vertex>> routes = new Dictionary<int, List<Vertex>>() { { 7, route7}, { 23, route23 }, { 62, route62 }, { 404, route404 },
-                                                                                           { 20, route20 }, { 43, route43 }, { 107, route107 }};
+        Dictionary<int, List<Vertex>> routes = new Dictionary<int, List<Vertex>>() { { 7, route7}, { 23, route23 }, { 62, route62 }, 
+                                                                                           { 20, route20 }, { 43, route43 }};
 
         static BusPark Bus7_1, Bus7_2, Bus7_3, Bus7_4, Bus7_5, Bus7_6, Bus7_7, Bus7_8, Bus7_9, Bus7_10, Bus7_11, Bus7_12, Bus7_13, Bus7_14, Bus7_15, Bus7_16, Bus23_1,
-        Bus23_2, Bus62_1, Bus404_1, Bus404_2,
-        Bus_107, Bus_43, Bus_20;
+        Bus23_2, Bus62_1, 
+         Bus_43, Bus_20;
 
         static List<BusPark> park7;
         static List<BusPark> park23;
         static List<BusPark> park62;
-        static List<BusPark> park404;
+
         static List<BusPark> park20;
 
 
         static List<BusPark> park43;
-        static List<BusPark> park107;
+        //static List<BusPark> park107;
 
         static List<Vertex> route7;
         static List<Vertex> route23;
         static List<Vertex> route62;
-        static List<Vertex> route404;
+
 
         private void chart1_Click(object sender, EventArgs e)
         {
@@ -45,6 +45,12 @@ namespace SystAnalys_lr1
         }
 
         static List<Vertex> route20;
+
+        private void pictureBox7_3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         static List<Vertex> route43;
         static List<Vertex> route107;
 
@@ -64,7 +70,7 @@ namespace SystAnalys_lr1
             {
                 globgrid.Add(i, 0);
             }
-            label3.Text = Bus7_1.getGrids()[6].res.ToString();
+            //label3.Text = Bus7_1.getGrids()[6].res.ToString();
             foreach (var bus in buses)
             {
                 if (bus.grids != null)
@@ -226,7 +232,7 @@ namespace SystAnalys_lr1
             route23 = AllRotations.GetRoute23();
             stop = AllRotations.GetStop();
             route62 = AllRotations.GetRoute62();
-            route404 = AllRotations.GetRoute404();
+          
             route107 = AllRotations.GetRoute107();
             route43 = AllRotations.GetRoute43();
             route20 = AllRotations.GetRoute20();
@@ -249,14 +255,14 @@ namespace SystAnalys_lr1
 
             AddBuses();
 
-       
 
+            timer2.Interval = 25000;
             timer2.Start();
-            //DisplayEpicenters Ep = new DisplayEpicenters(Epics);
+            DisplayEpicenters Ep = new DisplayEpicenters(Epics);
 
-            //Ep.Show();
-            
-            
+            Ep.Show();
+
+
 
         }
         private void CreateGrid()
@@ -290,7 +296,7 @@ namespace SystAnalys_lr1
         {
             Bus7_1 = new BusPark(route7, pictureBus7_1, 0, stop, 7);
             Bus7_1.Start();
-            Bus7_2 = new BusPark(route7, pictureBox7_3, 10, stop, 7);
+            Bus7_2 = new BusPark(route7, pictureBox7_3, 1, stop, 7);
             Bus7_2.Start();
             Bus7_3 = new BusPark(route7, pictureBus7_2, 20, stop, 7);
             Bus7_3.Start();
@@ -321,7 +327,7 @@ namespace SystAnalys_lr1
             Bus7_16 = new BusPark(route7, pictureBox7, 10, true, stop, 7);
             Bus7_16.Start();
 
-            Bus23_1 = new BusPark(route23, pictureBus23_1, 5, stop, 7);
+            Bus23_1 = new BusPark(route23, pictureBus23_1, 1, stop, 23);
             Bus23_1.Start();
             Bus23_2 = new BusPark(route23, pictureBus23_2, 14, stop, 23);
             Bus23_2.Start();
@@ -329,13 +335,9 @@ namespace SystAnalys_lr1
             Bus62_1 = new BusPark(route62, pictureBus62_1, 1, stop, 62);
             Bus62_1.Start();
 
-            Bus404_1 = new BusPark(route404, pictureBus404_1, 1, stop, 404);
-            Bus404_1.Start();
-            Bus404_2 = new BusPark(route404, pictureBus404_2, route404.Count - 1, stop, 404);
-            Bus404_2.Start();
 
-            Bus_107 = new BusPark(route107, pictureBox15, 0, stop, 107);
-            Bus_107.Start();
+
+
             Bus_43 = new BusPark(route43, pictureBox16, 0, stop, 43);
             Bus_43.Start();
             Bus_20 = new BusPark(route20, pictureBox17, 0, stop, 20);
@@ -345,14 +347,14 @@ namespace SystAnalys_lr1
             park7 = new List<BusPark>() { Bus7_1, Bus7_2, Bus7_3, Bus7_4, Bus7_5, Bus7_6, Bus7_7, Bus7_8, Bus7_9, Bus7_10, Bus7_11, Bus7_12, Bus7_13, Bus7_14, Bus7_15, Bus7_16 };
             park23 = new List<BusPark>() { Bus23_1, Bus23_2 };
             park62 = new List<BusPark>() { Bus62_1 };
-            park404 = new List<BusPark>() { Bus404_1, Bus404_2 };
+          
             park20 = new List<BusPark>() { Bus_20 };
             park43 = new List<BusPark>() { Bus_43 };
-            park107 = new List<BusPark>() { Bus_107 };
+            //park107 = new List<BusPark>() { Bus_107 };
 
             buses = new List<BusPark>() { Bus7_1, Bus7_2, Bus7_3, Bus62_1, Bus23_2, Bus7_4, Bus7_5, Bus7_6, Bus7_7, Bus7_8, Bus7_9,
-                Bus7_10, Bus7_11, Bus7_12, Bus7_13, Bus7_14, Bus7_15, Bus7_16, Bus23_1, Bus404_1, Bus404_2, Bus_20, Bus_43, Bus_107 };
-            busesPark = new List<List<BusPark>>() { park7, park23, park62, park404, park20, park43, park107 };
+                Bus7_10, Bus7_11, Bus7_12, Bus7_13, Bus7_14, Bus7_15, Bus7_16, Bus23_1,  Bus_20, Bus_43};
+            busesPark = new List<List<BusPark>>() { park7, park23, park62,  park20, park43 };
 
         }
 
