@@ -68,8 +68,17 @@
             this.pictureBus7_2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7_3 = new System.Windows.Forms.PictureBox();
             this.pictureBus7_1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.selectButton = new System.Windows.Forms.Button();
+            this.deleteALLButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.drawEdgeButton = new System.Windows.Forms.Button();
+            this.drawVertexButton = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Save = new System.Windows.Forms.Button();
+            this.Load = new System.Windows.Forms.Button();
             this.sheet = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -98,8 +107,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus7_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus7_1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -171,7 +181,6 @@
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -193,13 +202,12 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(324, 150);
+            this.button3.Location = new System.Drawing.Point(197, 84);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 51;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label4
             // 
@@ -470,17 +478,91 @@
             this.pictureBus7_1.TabIndex = 14;
             this.pictureBus7_1.TabStop = false;
             // 
-            // pictureBox5
+            // selectButton
             // 
-            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox5.Image = global::SystAnalys_lr1.Properties.Resources.map2;
-            this.pictureBox5.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(1852, 904);
-            this.pictureBox5.TabIndex = 20;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
-            this.pictureBox5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseClick);
+            this.selectButton.Image = global::SystAnalys_lr1.Properties.Resources.cursor;
+            this.selectButton.Location = new System.Drawing.Point(12, 150);
+            this.selectButton.Name = "selectButton";
+            this.selectButton.Size = new System.Drawing.Size(45, 45);
+            this.selectButton.TabIndex = 59;
+            this.selectButton.UseVisualStyleBackColor = true;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
+            // 
+            // deleteALLButton
+            // 
+            this.deleteALLButton.Image = global::SystAnalys_lr1.Properties.Resources.deleteAll;
+            this.deleteALLButton.Location = new System.Drawing.Point(13, 355);
+            this.deleteALLButton.Name = "deleteALLButton";
+            this.deleteALLButton.Size = new System.Drawing.Size(45, 45);
+            this.deleteALLButton.TabIndex = 58;
+            this.deleteALLButton.UseVisualStyleBackColor = true;
+            this.deleteALLButton.Click += new System.EventHandler(this.deleteALLButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Image = global::SystAnalys_lr1.Properties.Resources.delete;
+            this.deleteButton.Location = new System.Drawing.Point(13, 304);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(45, 45);
+            this.deleteButton.TabIndex = 57;
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // drawEdgeButton
+            // 
+            this.drawEdgeButton.Image = global::SystAnalys_lr1.Properties.Resources.edge;
+            this.drawEdgeButton.Location = new System.Drawing.Point(12, 253);
+            this.drawEdgeButton.Name = "drawEdgeButton";
+            this.drawEdgeButton.Size = new System.Drawing.Size(45, 45);
+            this.drawEdgeButton.TabIndex = 56;
+            this.drawEdgeButton.UseVisualStyleBackColor = true;
+            this.drawEdgeButton.Click += new System.EventHandler(this.drawEdgeButton_Click);
+            // 
+            // drawVertexButton
+            // 
+            this.drawVertexButton.Image = global::SystAnalys_lr1.Properties.Resources.vertex;
+            this.drawVertexButton.Location = new System.Drawing.Point(13, 202);
+            this.drawVertexButton.Name = "drawVertexButton";
+            this.drawVertexButton.Size = new System.Drawing.Size(45, 45);
+            this.drawVertexButton.TabIndex = 55;
+            this.drawVertexButton.UseVisualStyleBackColor = true;
+            this.drawVertexButton.Click += new System.EventHandler(this.drawVertexButton_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.busParkBindingSource, "Date", true));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "7",
+            "23",
+            "62",
+            "43"});
+            this.comboBox1.Location = new System.Drawing.Point(13, 15);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 60;
+            this.comboBox1.Text = "23";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(12, 96);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(75, 23);
+            this.Save.TabIndex = 61;
+            this.Save.Text = "Save";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // Load
+            // 
+            this.Load.Location = new System.Drawing.Point(13, 68);
+            this.Load.Name = "Load";
+            this.Load.Size = new System.Drawing.Size(75, 23);
+            this.Load.TabIndex = 62;
+            this.Load.Text = "Load";
+            this.Load.UseVisualStyleBackColor = true;
+            this.Load.Click += new System.EventHandler(this.Load_Click);
             // 
             // sheet
             // 
@@ -488,19 +570,43 @@
             this.sheet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sheet.Location = new System.Drawing.Point(0, 0);
             this.sheet.Name = "sheet";
-            this.sheet.Size = new System.Drawing.Size(1852, 904);
+            this.sheet.Size = new System.Drawing.Size(1852, 908);
             this.sheet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.sheet.TabIndex = 0;
             this.sheet.TabStop = false;
+            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sheet_MouseClick);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Image = global::SystAnalys_lr1.Properties.Resources.map2;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(1852, 908);
+            this.pictureBox5.TabIndex = 63;
+            this.pictureBox5.TabStop = false;
+            // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.BusPark);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1852, 904);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1869, 904);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.Load);
+            this.Controls.Add(this.Save);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.selectButton);
+            this.Controls.Add(this.deleteALLButton);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.drawEdgeButton);
+            this.Controls.Add(this.drawVertexButton);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -568,16 +674,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus7_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus7_1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox sheet;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem about;
         private System.Windows.Forms.PictureBox pictureBus7_1;
@@ -603,7 +708,6 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox17;
@@ -618,6 +722,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button selectButton;
+        private System.Windows.Forms.Button deleteALLButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button drawEdgeButton;
+        private System.Windows.Forms.Button drawVertexButton;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.BindingSource busParkBindingSource;
+        private System.Windows.Forms.Button Save;
+        private System.Windows.Forms.Button Load;
+        private System.Windows.Forms.PictureBox sheet;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
 

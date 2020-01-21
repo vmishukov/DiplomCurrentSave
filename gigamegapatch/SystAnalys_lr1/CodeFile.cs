@@ -10,10 +10,14 @@ using System.Windows.Forms;
 
 namespace SystAnalys_lr1
 {
-    class Vertex
+    public class Vertex
     {
         public int x, y;
         private Point point;
+
+        public Vertex()
+        {
+        }
 
         public Vertex(int x, int y)
         {
@@ -28,9 +32,13 @@ namespace SystAnalys_lr1
         }
     }
 
-    class Edge
+    public class Edge
     {
         public int v1, v2;
+
+        public Edge()
+        {
+        }
 
         public Edge(int v1, int v2)
         {
@@ -49,7 +57,7 @@ namespace SystAnalys_lr1
         Font fo;
         Brush br;
         PointF point;
-        public int R = 20; //радиус окружности вершины
+        public int R = 10; //радиус окружности вершины
 
         public DrawGraph(int width, int height)
         {
@@ -57,11 +65,11 @@ namespace SystAnalys_lr1
             gr = Graphics.FromImage(bitmap);
             clearSheet();
             blackPen = new Pen(Color.Black);
-            blackPen.Width = 2;
+            blackPen.Width = 1;
             redPen = new Pen(Color.Red);
-            redPen.Width = 2;
+            redPen.Width = 1;
             darkGoldPen = new Pen(Color.DarkGoldenrod);
-            darkGoldPen.Width = 2;
+            darkGoldPen.Width = 1;
             fo = new Font("Arial", 15);
             br = Brushes.Black;
         }
@@ -78,31 +86,32 @@ namespace SystAnalys_lr1
 
         public void drawVertex(int x, int y, string number)
         {
-            gr.FillEllipse(Brushes.White, (x - R), (y - R), 2 * R, 2 * R);
-            gr.DrawEllipse(blackPen, (x - R), (y - R), 2 * R, 2 * R);
+            gr.FillEllipse(Brushes.GreenYellow, (x-5), (y-5), R, R);
+            gr.DrawEllipse(blackPen, (x-5), (y-5),  R,  R);
             point = new PointF(x - 9, y - 9);
-            gr.DrawString(number, fo, br, point);
+           // gr.DrawString(number, fo, br, point);
         }
 
         public void drawSelectedVertex(int x, int y)
         {
-            gr.DrawEllipse(redPen, (x - R), (y - R), 2 * R, 2 * R);
+            gr.DrawEllipse(redPen, (x - 5), (y - 5), R, R);
+            gr.FillEllipse(Brushes.Red, (x - 5), (y - 5), R, R);
         }
 
         public void drawEdge(Vertex V1, Vertex V2, Edge E, int numberE)
         {
             if (E.v1 == E.v2)
             {
-                gr.DrawArc(darkGoldPen, (V1.x - 2 * R), (V1.y - 2 * R), 2 * R, 2 * R, 90, 270);
-                point = new PointF(V1.x - (int)(2.75 * R), V1.y - (int)(2.75 * R));
-                gr.DrawString(((char)('a' + numberE)).ToString(), fo, br, point);
-                drawVertex(V1.x, V1.y, (E.v1 + 1).ToString());
+                gr.DrawArc(darkGoldPen, (V1.x - R), (V1.y - R), R, R, 90, 270);
+                //point = new PointF(V1.x - (int)(2.75 * R), V1.y - (int)(2.75 * R));
+                //gr.DrawString(((char)('a' + numberE)).ToString(), fo, br, point);
+                //drawVertex(V1.x, V1.y, (E.v1 + 1).ToString());
             }
             else
             {
                 gr.DrawLine(darkGoldPen, V1.x, V1.y, V2.x, V2.y);
-                point = new PointF((V1.x + V2.x) / 2, (V1.y + V2.y) / 2);
-                gr.DrawString(((char)('a' + numberE)).ToString(), fo, br, point);
+                //point = new PointF((V1.x + V2.x) / 2, (V1.y + V2.y) / 2);
+                //gr.DrawString(((char)('a' + numberE)).ToString(), fo, br, point);
                 drawVertex(V1.x, V1.y, (E.v1 + 1).ToString());
                 drawVertex(V2.x, V2.y, (E.v2 + 1).ToString());
             }
@@ -110,20 +119,24 @@ namespace SystAnalys_lr1
 
         public void drawALLGraph(List<Vertex> V, List<Edge> E)
         {
+            
             //рисуем ребра
             for (int i = 0; i < E.Count; i++)
             {
                 if (E[i].v1 == E[i].v2)
                 {
                     gr.DrawArc(darkGoldPen, (V[E[i].v1].x - 2 * R), (V[E[i].v1].y - 2 * R), 2 * R, 2 * R, 90, 270);
-                    point = new PointF(V[E[i].v1].x - (int)(2.75 * R), V[E[i].v1].y - (int)(2.75 * R));
-                    gr.DrawString(((char)('a' + i)).ToString(), fo, br, point);
+                    //point = new PointF(V[E[i].v1].x - (int)(2.75 * R), V[E[i].v1].y - (int)(2.75 * R));
+                    //gr.DrawString(((char)('a' + i)).ToString(), fo, br, point);
                 }
                 else
                 {
-                    gr.DrawLine(darkGoldPen, V[E[i].v1].x, V[E[i].v1].y, V[E[i].v2].x, V[E[i].v2].y);
-                    point = new PointF((V[E[i].v1].x + V[E[i].v2].x) / 2, (V[E[i].v1].y + V[E[i].v2].y) / 2);
-                    gr.DrawString(((char)('a' + i)).ToString(), fo, br, point);
+                    if (E[i].v1 < V.Count && E[i].v2 < V.Count)
+                    {
+                        gr.DrawLine(darkGoldPen, V[E[i].v1].x, V[E[i].v1].y, V[E[i].v2].x, V[E[i].v2].y);
+                    }               
+                    //point = new PointF((V[E[i].v1].x + V[E[i].v2].x) / 2, (V[E[i].v1].y + V[E[i].v2].y) / 2);
+                    //gr.DrawString(((char)('a' + i)).ToString(), fo, br, point);
                 }
             }
             //рисуем вершины
@@ -131,6 +144,7 @@ namespace SystAnalys_lr1
             {
                 drawVertex(V[i].x, V[i].y, (i + 1).ToString());
             }
+
         }
 
         ////заполняет матрицу смежности
@@ -177,7 +191,9 @@ namespace SystAnalys_lr1
         private int route;
         private double _date;
         public Dictionary<int, int> grids;
-        private int? Locate = null;
+        public int? Locate = null;
+
+        public int? lastLocate;
 
         public int? getLocate()
         {
@@ -378,8 +394,10 @@ namespace SystAnalys_lr1
 
         public void Move()
         {
-            if (TurnBack == false)
+            if (V.Count != 0 )
             {
+                if (TurnBack == false)
+                {
                 if ((TurnBack == false) && (Math.Abs((Math.Abs(x) + Math.Abs(y)) - (Math.Abs((V[PositionAt].x) + Math.Abs(V[PositionAt].y))))) > 3)
                 {
                  
@@ -413,32 +431,33 @@ namespace SystAnalys_lr1
             }
             if (TurnBack == true)
             {
-
-                if ((Math.Abs((Math.Abs(x) + Math.Abs(y)) - (Math.Abs(V[PositionAt].x + Math.Abs(V[PositionAt].y))))) > 3)
-                {
-              
-                    x -= Math.Sin(angle);
-                    y -= Math.Cos(angle);
-
-
-                    Bus.Left = (int)x;
-                    Bus.Top = (int)y;
-                }
-                else
-                {
-                    if (PositionAt == 0)
+                
+                    if ((Math.Abs((Math.Abs(x) + Math.Abs(y)) - (Math.Abs(V[PositionAt].x + Math.Abs(V[PositionAt].y))))) > 3)
                     {
-                        TurnBack = false;
+
+                        x -= Math.Sin(angle);
+                        y -= Math.Cos(angle);
+
+
+                        Bus.Left = (int)x;
+                        Bus.Top = (int)y;
                     }
                     else
                     {
-                        PositionAt = PositionAt - 1;
-                        angle = GetAngle(V[PositionAt].x, V[PositionAt].y);
+                        if (PositionAt == 0)
+                        {
+                            TurnBack = false;
+                        }
+                        else
+                        {
+                            PositionAt = PositionAt - 1;
+                            angle = GetAngle(V[PositionAt].x, V[PositionAt].y);
+                        }
+
                     }
 
                 }
-
-            }
+            }                
 
         }
     }
@@ -464,13 +483,11 @@ namespace SystAnalys_lr1
         }
     }
 
-    public class grid_part : ICloneable
+    public class grid_part
     {
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
+        
         public int x, y, width, height, res;
+        private static int i = 0;
         public bool check = false;  //todo
 
         public grid_part(int x, int y, int height, int width)
@@ -484,7 +501,11 @@ namespace SystAnalys_lr1
         public void setRes() {
             this.res += 1;
         }
+        public void DrawNum(Graphics g)        {
 
+            g.DrawString(i.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Green, x, y);
+            i++;
+        }
         public void DrawPart(Graphics g)
         {
             g.DrawRectangle(new Pen(Color.Black, 1), x, y, width, height);
